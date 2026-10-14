@@ -54,7 +54,7 @@
   }
   function predictionDialog(r){dialog('<h2>原預測圖</h2><p>首次開啟模型前的預測已保留；之後修改作圖也不會覆寫這張原稿。</p><img src="'+r.initialImage+'" alt="保留的原預測圖">','prediction-dialog');}
   function downloadDialog(){
-   flush();const name=(lesson===1?'第1節_光與二維波的反射折射':'第2節_折射率斯乃爾定律與應用')+'_學習單_v1.0',d=dialog('<h2>下載作圖紀錄</h2><p>包含目前兩節課已保存的圖，不會清除裝置上的作答。</p><label class="signature-label">班級／座號（可留白）<input id="signature" type="text" value="'+esc(data.meta.signature||'')+'"></label><div class="download-choices"><button data-export="html"><b>可閱讀的作圖紀錄</b><span>開啟即可看預測圖、模型答案與幾何推導</span></button><button data-export="json"><b>完整作圖紀錄</b><span>保留筆劃、模型設定與原預測</span></button></div><div class="paper-links"><b>本節紙本</b><a download href="下載/'+name+'.pdf">PDF</a><a download href="下載/'+name+'.docx">Word</a></div>','download-dialog');
+   flush();const name=(lesson===1?'第1節_光與二維波的反射折射':'第2節_折射率斯乃爾定律與應用')+'_學習單_v1.0',d=dialog('<h2>下載作圖紀錄</h2><p>包含目前兩節課已保存的圖，不會清除裝置上的作答。</p><label class="signature-label">班級／座號（可留白）<input id="signature" type="text" value="'+esc(data.meta.signature||'')+'"></label><div class="download-choices"><button data-export="html"><b>可閱讀的作圖紀錄</b><span>開啟即可看預測圖、模型答案與幾何推導</span></button><button data-export="json"><b>完整作圖紀錄</b><span>保留筆劃、模型設定與原預測</span></button></div>','download-dialog');
    d.querySelector('#signature').oninput=e=>{data.meta.signature=e.target.value;save();};d.querySelectorAll('[data-export]').forEach(b=>b.onclick=()=>{exportFile(b.dataset.export);});
   }
   function fit(){
@@ -99,7 +99,7 @@
     if(topic==='wave'){putPlay(host,sim,phase==='P'?'入射波前':'波前模型');if(phase==='O'){const key=document.createElement('p');key.className='original-color-key';key.innerHTML='模型波前：<b class="incoming-key">藍＝入射</b>、<b class="refracted-key">綠＝折射</b>。';$('.task-heading').append(key);}}
     if(phase==='O'){const button=document.createElement('button');button.textContent='調整條件';button.id='adjust-model';button.onclick=()=>adjustDialog(host,sim,id);$('#model-tools').append(button);}
    }
-   if(phase==='P')board=bindBoard(r,'P',{canvas,kind:topic==='depth'?'depth':medium,label:title+' 預測作圖區',tool:'line',color:'#e16f50'});
+   if(phase==='P'){board=bindBoard(r,'P',{canvas,kind:topic==='depth'?'depth':medium,label:title+' 預測作圖區',tool:'line',color:'#e16f50'});if(sim)requestAnimationFrame(()=>sim.render());}
    else{
     canvas.className='model-base';$('#canvas-space').append(canvas);observeFit();sim.render();r.answerImage=canvas.toDataURL();
     if(topic==='mirage'){const pov=document.createElement('button');pov.id='view-model-image';pov.textContent='看眼睛所見';pov.onclick=()=>{sim.render();const cv=host.querySelector('.pov canvas');if(cv)dialog('<h2>模型計算的眼睛所見</h2><img src="'+cv.toDataURL()+'" alt="由物體上下各點光路計算的影像"><p>橘色為物體下部，藍色為上部。完整形狀由多條光路的入眼方向共同決定。</p>');};$('#model-tools').append(pov);}
