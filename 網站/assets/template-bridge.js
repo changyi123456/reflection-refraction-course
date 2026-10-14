@@ -24,7 +24,7 @@ function init(){
   if(m.type==='optics-shell-route'){const value=String(m.hash||'');if(value.includes('://')||value.length>200)return;if(location.hash.slice(1)!==value)location.hash=value;else g.TemplateDocuments?.go(value);update();}
   if(m.type==='optics-shell-action'&&m.action==='ai'){const button=document.querySelector('#ai-open')||document.querySelector('#ai-help');if(button&&!button.disabled)button.click();else document.querySelector('[data-ai-open]')?.click();update();}
  });
- g.addEventListener('hashchange',schedule);new MutationObserver(schedule).observe(document.body,{childList:true,subtree:true});update();
+ g.addEventListener('hashchange',schedule);document.addEventListener('click',schedule);document.addEventListener('change',schedule);update();
  if(embedded)g.dispatchEvent(new Event('resize'));
 }
 g.TemplateBridge={embedded,navigate,update};

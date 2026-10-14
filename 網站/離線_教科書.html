@@ -236,6 +236,8 @@ body[data-embedded=true].flow-classroom #toggle-menu{display:none!important}
 .template-home{--home-pager:64px}.template-home .template-source-nav{display:none}.template-home .template-flow-viewport{padding:0}.template-home .flow-page{padding:0}.template-home .flow-page:has(.hero){background:var(--board)}.template-home .hero{width:100%;min-height:calc(100dvh - var(--home-pager) - 2px);margin:0;border-radius:0;align-items:center}.template-home .hero-visual{margin:0}.template-home .flow-stack.hero{min-height:0}@media(max-width:760px){.template-home{--home-pager:58px}.template-home .hero{gap:20px}.template-home .hero h1{font-size:34px;margin:12px 0 16px}.template-home .stats{margin-top:20px;gap:28px}.template-home .hero-actions{margin-top:18px}}
 
 .template-home .template-flow-root{padding:0}.template-home .template-pager{height:var(--home-pager);min-height:var(--home-pager);flex-direction:row;margin:0}.template-home .flow-content{margin:0}@media(max-width:760px){.template-home .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.template-home .stats dd{font-size:11px;line-height:1.7}}
+
+.template-home .teacher-grid:has(>article:only-child){grid-template-columns:minmax(0,1fr)}
 </style><script>(function(g){
 'use strict';
 const embedded=new URLSearchParams(location.search).get('embedded')==='1'&&g.parent!==g;
@@ -262,7 +264,7 @@ function init(){
   if(m.type==='optics-shell-route'){const value=String(m.hash||'');if(value.includes('://')||value.length>200)return;if(location.hash.slice(1)!==value)location.hash=value;else g.TemplateDocuments?.go(value);update();}
   if(m.type==='optics-shell-action'&&m.action==='ai'){const button=document.querySelector('#ai-open')||document.querySelector('#ai-help');if(button&&!button.disabled)button.click();else document.querySelector('[data-ai-open]')?.click();update();}
  });
- g.addEventListener('hashchange',schedule);new MutationObserver(schedule).observe(document.body,{childList:true,subtree:true});update();
+ g.addEventListener('hashchange',schedule);document.addEventListener('click',schedule);document.addEventListener('change',schedule);update();
  if(embedded)g.dispatchEvent(new Event('resize'));
 }
 g.TemplateBridge={embedded,navigate,update};
