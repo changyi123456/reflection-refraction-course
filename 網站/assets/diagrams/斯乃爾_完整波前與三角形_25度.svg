@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="870" viewBox="0 0 960 580" role="img">
+<title>直線波折射：完整波前與同一組直角三角形</title><desc>藍色入射波前與綠色折射波前在界面接續；A、B為相鄰波前在界面的交點。C、D為垂足；橘色BC、AD沿垂直波前方向量取波長。點位與逐步推導動畫一致。</desc>
+<defs><clipPath id="upper"><rect x="16" y="25" width="928" height="220"/></clipPath><clipPath id="lower"><rect x="16" y="245" width="928" height="235"/></clipPath><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#627773"/></marker></defs>
+<style>text{font-family:"PingFang TC","Noto Sans CJK TC",sans-serif;font-size:19px;fill:#16302d;paint-order:stroke;stroke:#fffdf8;stroke-width:5px;stroke-linejoin:round}.blue{fill:#2b7fc1}.green{fill:#167c78}.coral{fill:#e16f50}.note{font-size:17px}</style>
+<rect width="960" height="580" fill="#fffdf8"/><rect x="0" y="245" width="960" height="250" fill="#edf4f1"/>
+<text x="24" y="24" class="blue">第1區：入射波前</text><text x="24" y="476" class="green">第2區：折射波前</text>
+<path d="M-590.000 245.000L1222.616 -600.237" fill="none" stroke="#2b7fc1" stroke-width="2.5" clip-path="url(#upper)" opacity="0.55" data-wavefront="incident"/>
+<path d="M-590.000 245.000L-2513.059 794.404" fill="none" stroke="#167c78" stroke-width="2.5" clip-path="url(#lower)" opacity="0.55" data-wavefront="refracted"/>
+<path d="M-170.000 245.000L1642.616 -600.237" fill="none" stroke="#2b7fc1" stroke-width="2.5" clip-path="url(#upper)" opacity="0.55" data-wavefront="incident"/>
+<path d="M-170.000 245.000L-2093.059 794.404" fill="none" stroke="#167c78" stroke-width="2.5" clip-path="url(#lower)" opacity="0.55" data-wavefront="refracted"/>
+<path d="M250.000 245.000L2062.616 -600.237" fill="none" stroke="#2b7fc1" stroke-width="4" clip-path="url(#upper)" opacity="1" data-wavefront="incident"/>
+<path d="M250.000 245.000L-1673.059 794.404" fill="none" stroke="#167c78" stroke-width="2.5" clip-path="url(#lower)" opacity="0.55" data-wavefront="refracted"/>
+<path d="M670.000 245.000L2482.616 -600.237" fill="none" stroke="#2b7fc1" stroke-width="2.5" clip-path="url(#upper)" opacity="0.55" data-wavefront="incident"/>
+<path d="M670.000 245.000L-1253.059 794.404" fill="none" stroke="#167c78" stroke-width="4" clip-path="url(#lower)" opacity="1" data-wavefront="refracted"/>
+<path d="M1090.000 245.000L2902.616 -600.237" fill="none" stroke="#2b7fc1" stroke-width="2.5" clip-path="url(#upper)" opacity="0.55" data-wavefront="incident"/>
+<path d="M1090.000 245.000L-833.059 794.404" fill="none" stroke="#167c78" stroke-width="2.5" clip-path="url(#lower)" opacity="0.55" data-wavefront="refracted"/>
+<path d="M1510.000 245.000L3322.616 -600.237" fill="none" stroke="#2b7fc1" stroke-width="2.5" clip-path="url(#upper)" opacity="0.55" data-wavefront="incident"/>
+<path d="M1510.000 245.000L-413.059 794.404" fill="none" stroke="#167c78" stroke-width="2.5" clip-path="url(#lower)" opacity="0.55" data-wavefront="refracted"/>
+<polygon points="250.000,245.000 670.000,245.000 594.985,84.131" fill="#2b7fc1" opacity=".075"/>
+<polygon points="250.000,245.000 670.000,245.000 281.694,355.936" fill="#167c78" opacity=".075"/>
+<path d="M16.000 245.000L944.000 245.000" fill="none" stroke="#627773" stroke-width="2" />
+<path d="M250.000 245.000L670.000 245.000" fill="none" stroke="#b87916" stroke-width="5" />
+<path d="M670.000 245.000L594.985 84.131" fill="none" stroke="#e16f50" stroke-width="4" />
+<path d="M250.000 245.000L281.694 355.936" fill="none" stroke="#e16f50" stroke-width="4" />
+<path d="M250.000 52.000L250.000 430.000" fill="none" stroke="#627773" stroke-width="1.5" stroke-dasharray="6 6"/>
+<path d="M203.512 145.306L250.000 245.000" fill="none" stroke="#627773" stroke-width="2.5" marker-end="url(#arr)"/>
+<path d="M250.000 245.000L292.579 394.037" fill="none" stroke="#627773" stroke-width="2.5" marker-end="url(#arr)"/>
+<path d="M583.2033968026967 89.6247043476437L588.6974342053259 101.40670557912014L600.4794354368023 95.91266817649105" fill="none" stroke="#16302d" stroke-width="2"/>
+<path d="M278.1225450188529 343.4363711168949L290.62242786431676 339.865246805186L294.19355217602566 352.36512965064986" fill="none" stroke="#16302d" stroke-width="2"/>
+<circle cx="250.000" cy="245.000" r="4" fill="#16302d"/><text x="228.000" y="268.000">A</text>
+<circle cx="670.000" cy="245.000" r="4" fill="#16302d"/><text x="682.000" y="268.000">B</text>
+<circle cx="594.985" cy="84.131" r="4" fill="#16302d"/><text x="573.985" y="72.131">C</text>
+<circle cx="281.694" cy="355.936" r="4" fill="#16302d"/><text x="295.694" y="378.936">D</text>
+<text x="318" y="118" class="blue">入射波前 AC</text>
+<text x="490" y="397" class="green">折射波前 DB</text>
+<text x="690" y="173" class="coral">BC = λ₁</text>
+<text x="332" y="371" class="coral">AD = λ₂</text>
+<text x="438" y="230" class="">共斜邊 AB = L</text>
+<text x="263" y="49" class="">法線</text>
+<path d="M300.7532360740524 221.33337734252083A56 56 0 0 1 306.0 245.0" fill="none" stroke="#2b7fc1" stroke-width="2"/><text x="324.19849654111493" y="228.5505893407042" fill="#2b7fc1">θ₁</text>
+<path d="M616.1543508195404 260.38330472736146A56 56 0 0 1 614.0 245.0" fill="none" stroke="#167c78" stroke-width="2"/><text x="594.7344896344131" y="255.54053838320047" fill="#167c78">θ₂</text>
+<path d="M24 505H936" stroke="#cedbd6"/><text x="24" y="533" class="note">① 先看整列波前跨界　② 找相鄰波前的 A、B　③ 沿垂直波前方向量 λ₁、λ₂</text><text x="24" y="563" class="note">動畫使用同一組點位與色彩，逐步保留兩個直角三角形；波前仍是整列平行線。</text></svg>

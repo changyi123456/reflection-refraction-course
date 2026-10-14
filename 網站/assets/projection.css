@@ -1,0 +1,31 @@
+[hidden]{display:none!important}
+.projection-header{background:#0b403d;border-bottom:4px solid #e16f50}
+.teacher-tools select{border:1px solid #ffffff40;background:#0b403d;color:white;padding:6px;border-radius:6px;font-size:12px}
+.projection-split{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(260px,1fr);gap:24px;align-items:stretch;height:100%}
+.projection-opening{display:flex;align-items:center;justify-content:center;height:100%}
+.projection-opening .projection-notes{max-width:950px;padding:30px 40px;border-left:6px solid #167c78}
+.projection-notes.script-panel{display:block;min-width:0;min-height:0;overflow:auto;padding:18px 20px}
+.projection-notes h2{font-size:clamp(23px,2vw,34px);line-height:1.3;margin:0 0 14px}
+.projection-notes ol{padding-left:1.3em;margin:12px 0}.projection-notes li{font-size:17px;line-height:1.6;margin:10px 0}
+.projection-question{font-size:17px;line-height:1.85;margin:10px 0}
+.projection-media{min-width:0;min-height:0;height:100%;margin:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.projection-media>img{width:100%;height:100%;min-height:0;object-fit:contain}
+.projection-media .simulation{width:100%;margin:0;max-height:100%}.projection-media .sim-desc{display:none}
+.projection-media .sim-heading{padding:8px 12px}.projection-media .sim-heading h3{font-size:16px}
+.projection-media .sim-controls{padding:8px 10px}.projection-media .sim-controls button{font-size:12px;padding:4px 7px}
+.projection-media .control{font-size:12px}.projection-media .control input[type=range]{width:88px}
+.projection-media .sim-readout{font-size:13px;padding:7px 11px}.projection-media .sim-explanation{font-size:13px}
+.projection-explanation{padding:10px 0 0;border-top:1px solid #cedbd6}.projection-explanation p{font-size:16px;line-height:1.75;margin:8px 0}.projection-explanation math{font-size:22px;margin:10px 0}
+.projection-presets{display:flex;flex-wrap:wrap;gap:7px;margin:18px 0}.projection-presets button,#wavefront-compare{border:1px solid #9eb8b0;border-radius:6px;padding:6px 9px;font-size:13px;background:#edf4f1;color:#0b403d;cursor:pointer}
+.projection-photos{display:block;overflow:auto}.projection-photos .photo-grid{grid-template-columns:1fr;gap:12px}.projection-photos .enlarge-photo img{height:250px}.projection-photos .photo-grid figcaption p{font-size:14px}.projection-photos .photo-grid small{font-size:10px}
+.projection-diagram-dialog{width:min(1200px,95vw);height:90vh;background:#fffdf8;border:1px solid #9eb8b0;border-radius:8px;padding:16px;display:flex;flex-direction:column}.projection-diagram-dialog:not([open]){display:none}.projection-diagram-dialog>button{align-self:flex-end}.projection-diagram-dialog img{width:100%;flex:1;min-height:0;object-fit:contain}
+.slide.is-revealed .slide-body{padding-bottom:84px}.teacher-reveal{max-height:90px;overflow:auto;display:block}.teacher-reveal strong{color:#8b6015;font-size:13px}.teacher-reveal p{font-size:15px;line-height:1.6;margin-top:3px}
+@media(max-height:720px){.projection-split{gap:16px}.projection-notes.script-panel{padding:12px 14px}.projection-notes h2{font-size:24px;margin-bottom:8px}.projection-notes li,.projection-question{font-size:15px;line-height:1.65}.projection-explanation p{font-size:14px}.projection-explanation math{font-size:18px}.projection-presets{margin:10px 0}.slide.is-revealed .slide-body{padding-bottom:74px}}
+@media(min-width:600px) and (max-width:1000px){.projection-split{grid-template-columns:minmax(0,1.25fr) minmax(220px,1fr);gap:16px}.projection-notes.script-panel{padding:12px}.projection-notes h2{font-size:23px}.projection-notes li,.projection-question{font-size:15px;line-height:1.65}.teacher-tools{gap:5px}.teacher-tools .tool-button{font-size:11px;padding:6px}.brand h1{font-size:16px}.projection-header{gap:10px}.projection-header .brand-wave{display:none}}
+@media(max-width:599px){:root{--rail:45px;--header:88px;--footer:112px}.projection-header{height:88px;flex-wrap:wrap;padding:8px 12px;gap:6px}.brand h1{font-size:14px}.brand p{font-size:10px;letter-spacing:0}.brand-wave{display:none}.teacher-tools{gap:5px}.teacher-tools .tool-button{font-size:10px;padding:4px 5px}#timer-output{min-width:48px;font-size:11px;padding:4px}.slide{padding:10px}.slide-head{height:38px;margin-bottom:8px}.slide-head p{font-size:11px}.slide-head span{font-size:10px}.slide-rail{padding:8px 3px}.slide-rail button{padding:6px 2px}.slide-rail b{width:22px!important;height:22px!important}.projection-split{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:9px}.projection-notes.script-panel{padding:10px}.projection-notes h2{font-size:19px;margin-bottom:6px}.projection-notes li,.projection-question{font-size:13px;line-height:1.65;margin:6px 0}.projection-explanation p{font-size:13px}.projection-explanation math{font-size:18px}.projection-media .sim-heading h3{font-size:12px}.projection-media .sim-controls{gap:4px;padding:5px}.projection-media .sim-controls button,.projection-media .control{font-size:10px}.projection-media .control input[type=range]{width:65px}.projection-media .sim-readout{font-size:11px;padding:5px}.projection-footer{padding:8px;gap:8px;grid-template-columns:1fr}.projection-footer nav{justify-content:space-between}.projection-footer p{font-size:12px}.projection-footer button{font-size:11px;padding:5px}.projection-photos .enlarge-photo img{height:180px}.slide.is-revealed .slide-body{padding-bottom:74px}.teacher-reveal{left:10px;right:10px;font-size:12px;padding:7px 9px}}
+/* 題圖與學生作圖採相同的2:1比例，避免投影縮放改變幾何角度。 */
+.projection-media>canvas{width:100%;height:auto;max-height:100%;object-fit:contain;aspect-ratio:2/1}
+
+.projection-notes .sim-controls{margin-top:16px;border:1px solid #cbd8d3;border-radius:7px;padding:10px;gap:7px}.projection-notes .sim-controls button{font-size:12px;padding:5px 7px}.projection-notes .sim-controls .control{font-size:12px}.projection-notes .sim-explanation{padding:0}
+
+.teacher-bank-link{display:block;margin:0 0 14px;padding:8px 10px;border:1px solid #167c78;border-radius:7px;color:#0b403d;background:#e2efea;font-size:13px;text-decoration:none}
