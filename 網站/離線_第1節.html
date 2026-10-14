@@ -455,6 +455,8 @@ body[data-embedded=true].flow-classroom #toggle-menu{display:none!important}
 
 /* The homepage cover fills the entire reading viewport. */
 .template-home{--home-pager:64px}.template-home .template-source-nav{display:none}.template-home .template-flow-viewport{padding:0}.template-home .flow-page{padding:0}.template-home .flow-page:has(.hero){background:var(--board)}.template-home .hero{width:100%;min-height:calc(100dvh - var(--home-pager) - 2px);margin:0;border-radius:0;align-items:center}.template-home .hero-visual{margin:0}.template-home .flow-stack.hero{min-height:0}@media(max-width:760px){.template-home{--home-pager:58px}.template-home .hero{gap:20px}.template-home .hero h1{font-size:34px;margin:12px 0 16px}.template-home .stats{margin-top:20px;gap:28px}.template-home .hero-actions{margin-top:18px}}
+
+.template-home .template-flow-root{padding:0}.template-home .template-pager{height:var(--home-pager);min-height:var(--home-pager);flex-direction:row;margin:0}.template-home .flow-content{margin:0}@media(max-width:760px){.template-home .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.template-home .stats dd{font-size:11px;line-height:1.7}}
 </style><script>(function(g){
 'use strict';
 const embedded=new URLSearchParams(location.search).get('embedded')==='1'&&g.parent!==g;
