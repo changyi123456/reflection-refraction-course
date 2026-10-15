@@ -5,7 +5,7 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 const icon=n=>'<i data-lucide="'+n+'"></i>';
 const routeFiles={overview:'教材總覽.html',book:'index.html',student:'學生探究.html',practice:'核心練習.html',projection:'教師投影.html',extension:'延伸資源.html',backup:'教師備援.html'};
 const titles={overview:'教材首頁',book:'整合教科書',student:'學生操作網頁',practice:'核心教學題目',projection:'教師同步投影',extension:'延伸資源',backup:'無設備備援'};
-let current={type:'overview',anchor:''},trail=[],trailIndex=-1,loadedFile='教材總覽.html';
+let current={type:'overview',anchor:''},trail=[],trailIndex=-1,loadedFile='';
 function link(type,anchor,label,symbol='file-text'){return '<a class="nav-item" href="#/'+type+(anchor?'/'+encodeURIComponent(anchor):'')+'">'+icon(symbol)+'<span>'+esc(label)+'</span></a>';}
 function group(label,items,symbol='book-open',open=false){return '<details class="nav-group" '+(open?'open':'')+'><summary>'+icon(symbol)+'<span>'+esc(label)+'</span>'+icon('chevron-right')+'</summary><div class="nav-children">'+items+'</div></details>';}
 function lessonResources(l){return link('student','l'+l,'學生操作網頁','monitor')+link('projection','l'+l+'-s0','教師同步投影','presentation')+link('backup','l'+l,'無設備備援','clipboard-list');}
@@ -20,7 +20,7 @@ function routeKey(r){return '#/'+r.type+(r.anchor?'/'+encodeURIComponent(r.ancho
 function select(){let anchor=current.anchor;if(current.type==='book')anchor=anchor.includes('-check')?anchor.split('-').slice(0,2).join('-'):anchor.split('-')[0];$('#tree').querySelectorAll('a').forEach(a=>{const r=parse(a.hash||a.getAttribute('href')),active=r.type===current.type&&r.anchor===anchor;if(active){a.setAttribute('aria-current','page');a.closest('details')?.setAttribute('open','');}else a.removeAttribute('aria-current');});}
 function historyButtons(){$('#history-back').disabled=trailIndex<=0;$('#history-next').disabled=trailIndex>=trail.length-1;}
 function navigate(r,record=true){current=r;const key=routeKey(r);if(record&&trail[trailIndex]!==key){trail=trail.slice(0,trailIndex+1);trail.push(key);trailIndex=trail.length-1;}historyButtons();$('#crumb-section').textContent=titles[r.type];$('#crumb-title').textContent=r.type==='book'?(D.nodes.find(n=>'p'+Number(n.id)===r.anchor.split('-')[0])?.name||titles.book):titles[r.type];frame.title=titles[r.type]+'：反射與折射';select();
- const file=routeFiles[r.type];if(file===loadedFile){frame.contentWindow?.postMessage({type:'optics-shell-route',hash:r.anchor},'*');}else{loadedFile=file;$('#frame-status').hidden=false;frame.setAttribute('aria-busy','true');frame.src=file+'?embedded=1&v=forest-10'+(r.anchor?'#'+r.anchor:'');}if(narrow())sidebar(false);
+ const file=routeFiles[r.type];if(file===loadedFile){frame.contentWindow?.postMessage({type:'optics-shell-route',hash:r.anchor},'*');}else{loadedFile=file;$('#frame-status').hidden=false;frame.setAttribute('aria-busy','true');frame.src=file+'?embedded=1&v=forest-11'+(r.anchor?'#'+r.anchor:'');}if(narrow())sidebar(false);
 }
 window.addEventListener('hashchange',()=>navigate(parse()));
 $('#history-back').onclick=()=>{if(trailIndex>0){trailIndex--;history.replaceState(null,'',trail[trailIndex]);navigate(parse(),false);}};
