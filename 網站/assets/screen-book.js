@@ -124,6 +124,7 @@
      list=n.id==='08'?[...observation.filter(p=>p.kind!=='observation'),...reading]:reading;
     }
     if(list.length)list[0].key='p'+Number(n.id);pages.push(...list);
+    if(n.id==='05'||n.id==='09')pages.push(...(g.ConceptChecks?.pages(n.lesson,frame)||[]));
    });pages.push(...resourcePages());
    let found=pages.findIndex(x=>x.key===oldKey);if(previous?.kind==='reading'){const matched=pages.findIndex(x=>x.node?.id===previous.node.id&&x.blocks?.some(b=>b.key===oldBlock));if(matched>=0)found=matched;}
    if(found<0&&oldKey)found=pages.findIndex(p=>p.key===oldKey.split('-')[0]);current=found<0?0:found;g.ScreenBook.pages=pages;render(false);
@@ -159,11 +160,12 @@
    main.querySelectorAll('[data-proof-open]').forEach(b=>b.onclick=()=>dialog('<h2>斯乃爾定律：完整推導</h2>'+blocksFor(page.node).map(b=>b.html).join(''),'proof-dialog'));
    main.querySelectorAll('.compare-wavefronts').forEach(b=>b.onclick=()=>openFigure({src:diagrams['07']}));
    main.querySelectorAll('.zoom-figure').forEach(b=>b.onclick=()=>openFigure(b.closest('figure').querySelector('img')));
+   g.ConceptChecks?.bind(main,openFigure);
    main.querySelectorAll('.simulation').forEach(host=>{const b=document.createElement('button');b.className='screen-zoom';b.textContent='放大圖示';b.onclick=()=>openFigure(host.querySelector('canvas'));host.querySelector('.sim-heading').append(b);});
    const geometric=main.querySelector('[data-sim="A06"]');if(geometric){const explanation=geometric.querySelector('.sim-explanation');explanation.classList.add('derivation-explanation');main.querySelector('.workbench-notes').append(explanation);}
    explanationWatcher=new MutationObserver(()=>requestAnimationFrame(fitMedia));main.querySelectorAll('.sim-explanation').forEach(x=>explanationWatcher.observe(x,{childList:true}));
    $('#prev').disabled=current===0;$('#next').disabled=current===pages.length-1;$('#page-label').textContent=(current+1)+' / '+pages.length;$('#progress').style.width=(current+1)/pages.length*100+'%';$('#reading-stage').textContent=page.stage;
-   $('#ai-help').hidden=!page.node||page.node.id==='01';
+   $('#ai-help').hidden=!page.node||page.node.id==='01'||page.kind==='check';
    document.querySelectorAll('[data-target]').forEach(b=>b.classList.toggle('is-active',b.dataset.target==='p'+(page.node?.lesson===1?1:page.node?.lesson===2?6:page.kind==='downloads'?10:page.kind==='sources'?11:0)));
    if(writeHash&&location.hash.slice(1)!==page.key)history.replaceState(null,'','#'+page.key);fitMedia();
    g.ScreenBook.current=page;g.TemplateBridge?.update();
@@ -172,7 +174,7 @@
   function dialog(content,cls){const d=document.createElement('dialog');d.className='screen-dialog '+cls;d.innerHTML='<button class="close-dialog" aria-label="關閉">關閉 ×</button>'+content;document.body.append(d);d.querySelector('.close-dialog').onclick=()=>d.close();d.onclose=()=>d.remove();d.showModal();return d;}
   function openFigure(image){const src=image instanceof HTMLCanvasElement?image.toDataURL():image.src;dialog('<img src="'+src+'" alt="放大的教材圖示">','figure-dialog');}
   function openPOV(host){const canvas=host.querySelector('.pov canvas');if(canvas){const explanation=host.querySelector('.sim-explanation'),caption=[...explanation.querySelectorAll('p')].map(p=>p.outerHTML).join('');dialog('<h2>眼睛所見</h2><img src="'+canvas.toDataURL()+'" alt="由入眼方向計算的表觀影像">'+caption,'figure-dialog');}}
-  $('#contents').onclick=()=>{const d=dialog('<h2>章節目錄</h2><div class="contents-list">'+D.nodes.map(n=>'<button data-topic="p'+Number(n.id)+'"><small>第'+n.lesson+'節</small>'+esc(n.name)+'</button>').join('')+'</div><p><a href="教材入口.html">教材入口</a> · <a href="學生探究.html">學生互動學習單</a></p>','contents-dialog');d.querySelectorAll('[data-topic]').forEach(b=>b.onclick=()=>{d.close();go(b.dataset.topic);});};
+  $('#contents').onclick=()=>{const d=dialog('<h2>章節目錄</h2><div class="contents-list">'+[1,2].map(lesson=>D.nodes.filter(n=>n.lesson===lesson).map(n=>'<button data-topic="p'+Number(n.id)+'"><small>第'+n.lesson+'節</small>'+esc(n.name)+'</button>').join('')+'<button data-topic="p'+(lesson===1?5:9)+'-check"><small>第'+lesson+'節</small>概念檢核（'+(lesson===1?2:3)+'題）</button>').join('')+'</div><p><a href="教材入口.html">教材入口</a> · <a href="學生探究.html">學生互動學習單</a></p>','contents-dialog');d.querySelectorAll('[data-topic]').forEach(b=>b.onclick=()=>{d.close();go(b.dataset.topic);});};
   $('#ai-help').onclick=()=>{const name=pages[current].node?.name||D.title,d=dialog('<h2>我該如何問 AI</h2><p class="ai-context">目前主題：'+esc(name)+'</p>'+h.promptCard(name),'ai-dialog');const details=d.querySelector('details'),content=document.createElement('div');content.className='prompt-card';content.innerHTML=[...details.children].filter(x=>x.tagName!=='SUMMARY').map(x=>x.outerHTML).join('');details.replaceWith(content);h.bindPrompts();};
   $('#prev').onclick=()=>{if(current>0){current--;render();}};$('#next').onclick=()=>{if(current<pages.length-1){current++;render();}};
   document.querySelectorAll('.screen-header [data-target]').forEach(b=>b.onclick=()=>go(b.dataset.target));

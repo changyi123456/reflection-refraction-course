@@ -8,7 +8,7 @@ function update(){
  document.querySelectorAll('dialog').forEach(d=>{const title=d.querySelector('h2')?.textContent||'';if(title.includes('AI')||d.classList.contains('ai-drawing-dialog'))d.classList.add('template-ai-dialog');});
  let label=g.TemplateDocuments?.label||document.querySelector('.screen-title h1,.flow-heading h2,.practice-heading h1,.projection-title h1')?.textContent||document.title;
  if(g.TeacherProjection?.current)label=g.TeacherProjection.current.title;
- const aiAvailable=!g.ScreenBook?.current||!!g.ScreenBook.current.node&&g.ScreenBook.current.node.id!=='01';
+ const aiAvailable=!g.ScreenBook?.current||!!g.ScreenBook.current.node&&g.ScreenBook.current.node.id!=='01'&&g.ScreenBook.current.kind!=='check';
  const state={type:'optics-child-state',hash:location.hash,label,aiAvailable};const serialized=JSON.stringify(state);if(embedded&&serialized!==last){last=serialized;g.parent.postMessage(state,'*');}
 }
 function schedule(){if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;update();});}
